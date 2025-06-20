@@ -72,6 +72,7 @@ export function PollResults({ poll, studentId }: PollResultsProps) {
               const percent =
                 totalVotes > 0 ? Math.round((opt.votes / totalVotes) * 100) : 0;
               const isStudentChoice = studentAnswer === opt.id;
+              const isCorrect = poll.correctOptionId === opt.id;
 
               // Color variations for bars
               const colors = [
@@ -83,7 +84,13 @@ export function PollResults({ poll, studentId }: PollResultsProps) {
               ];
 
               return (
-                <div key={opt.id} className="w-full">
+                <div
+                  key={opt.id}
+                  className={`w-full ${
+                    isCorrect ? "border-2 border-green-500 rounded-xl" : ""
+                  }`}
+                  style={{ marginBottom: "1.5rem" }}
+                >
                   <div className="flex justify-between items-center mb-3">
                     <div className="flex items-center">
                       <div className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-600 text-sm font-medium mr-4 flex-shrink-0">
@@ -106,6 +113,11 @@ export function PollResults({ poll, studentId }: PollResultsProps) {
                             />
                           </svg>
                           Your choice
+                        </div>
+                      )}
+                      {isCorrect && (
+                        <div className="ml-3 inline-flex items-center px-2 py-1 rounded-full bg-green-500 text-white text-xs font-medium">
+                          Correct Answer
                         </div>
                       )}
                     </div>

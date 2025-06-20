@@ -132,7 +132,7 @@ export default function JoinSession({
                 Session Code
               </label>
               <Input
-                placeholder="Enter 6-digit code"
+                placeholder="Enter Session code"
                 value={joinCode}
                 onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
                 className="intervue-input"

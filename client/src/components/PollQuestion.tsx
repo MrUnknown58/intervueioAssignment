@@ -15,6 +15,7 @@ export interface Poll {
   startTime?: number;
   duration: number;
   responses: Record<string, string>;
+  correctOptionId: string; // <-- add this field
 }
 
 interface PollQuestionProps {

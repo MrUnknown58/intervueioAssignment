@@ -86,15 +86,33 @@ function TeacherDashboard() {
     question: string;
     options: string[];
     duration: number;
+    correctIndex: number;
   }) => {
     if (!socket) return;
     setError("");
-    socket.emit("teacher:create_poll", { ...data, sessionId }, (poll: Poll) => {
-      setCurrentPoll(poll);
-      setShowResults(false);
-      // Instantly start the poll after creation
-      handleStartPoll(poll.id);
-    });
+    // Generate PollOptions with ids
+    const pollOptions = data.options.map((text, idx) => ({
+      id: `opt${idx}`,
+      text,
+      votes: 0,
+    }));
+    const correctOptionId = pollOptions[data.correctIndex]?.id;
+    socket.emit(
+      "teacher:create_poll",
+      {
+        question: data.question,
+        options: pollOptions,
+        duration: data.duration,
+        correctOptionId,
+        sessionId,
+      },
+      (poll: Poll) => {
+        setCurrentPoll(poll);
+        setShowResults(false);
+        // Instantly start the poll after creation
+        handleStartPoll(poll.id);
+      }
+    );
   };
 
   const handleStartPoll = (pollId: string) => {
