@@ -21,7 +21,7 @@ export function TeacherPanel({
   students,
   poll,
   onStartPoll,
-  onNextQuestion,
+  // onNextQuestion,
   onKickStudent,
 }: TeacherPanelProps) {
   const studentList = Object.values(students);
@@ -236,7 +236,7 @@ export function TeacherPanel({
               </Button>
             )}
 
-            {!poll.isActive && Object.keys(poll.responses).length > 0 && (
+            {/* {!poll.isActive && Object.keys(poll.responses).length > 0 && (
               <Button
                 onClick={onNextQuestion}
                 className="w-full intervue-btn intervue-btn-outline"
@@ -254,7 +254,7 @@ export function TeacherPanel({
                 </svg>
                 Prepare Next Question
               </Button>
-            )}
+            )} */}
 
             {poll.isActive && (
               <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-center">
