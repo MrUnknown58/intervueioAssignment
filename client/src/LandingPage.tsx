@@ -81,14 +81,14 @@ const LandingPage: React.FC = () => {
             </button>
 
             <button
-              className="w-full p-4 text-left bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 rounded-xl transition-all duration-200 hover:shadow-lg text-white"
+              className="w-full p-4 text-left bg-white border-2 border-slate-300! hover:border-indigo-300 rounded-xl transition-all duration-200 hover:shadow-md group"
               onClick={() => navigate("/teacher")}
             >
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                  <div className="w-10 h-10 bg-blue-50 group-hover:bg-blue-100 rounded-lg flex items-center justify-center transition-colors">
                     <svg
-                      className="w-5 h-5 text-white"
+                      className="w-5 h-5 text-blue-600"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -97,13 +97,15 @@ const LandingPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="ml-4 flex-1">
-                  <h3 className="font-semibold text-white">Teacher</h3>
-                  <p className="text-sm text-indigo-100 mt-1">
+                  <h3 className="font-semibold text-slate-800 transition-colors">
+                    Teacher
+                  </h3>
+                  <p className="text-sm text-slate-500 mt-1">
                     Create and manage poll sessions
                   </p>
                 </div>
                 <svg
-                  className="w-5 h-5 text-white text-opacity-80"
+                  className="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
