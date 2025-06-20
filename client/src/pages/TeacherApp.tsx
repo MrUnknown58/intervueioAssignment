@@ -137,7 +137,7 @@ function TeacherDashboard() {
     !currentPoll || (!currentPoll.isActive && showResults);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="container mx-auto px-4 py-6 max-w-7xl">
+      <div className="container mx-auto py-6 max-w-7xl">
         {/* Header */}
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 mb-6">
           <div className="flex justify-between items-center">

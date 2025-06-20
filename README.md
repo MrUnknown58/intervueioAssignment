@@ -1,3 +1,109 @@
+# Intervue.io - Real-time Classroom Polling App
+
+## Overview
+
+Intervue.io is a real-time web application designed for interactive classroom polling. It enables teachers to create and manage live polls, monitor student participation, and foster engagement. Students can join sessions using a code, answer polls, and interact with the teacher in real time.
+
+## Tech Stack
+
+- **Frontend:** React, TypeScript, Vite, Tailwind CSS
+- **Backend:** Node.js, TypeScript, Socket.IO, Supabase
+- **Deployment:** Vercel (for frontend), Node.js server (for backend)
+
+## Features
+
+- Teachers can create, start, and manage polls in real time
+- Students join sessions via a unique code and answer polls
+- Real-time updates for poll results and student participation
+- Teacher can view poll history and kick students if needed
+- Integrated chat for classroom communication
+
+## How to Run the Project
+
+### Prerequisites
+
+- Node.js (v16+ recommended)
+- npm or yarn
+
+### 1. Clone the Repository
+
+```sh
+git clone <repo-url>
+cd intervueio
+```
+
+### 2. Install Dependencies
+
+#### Frontend
+
+```sh
+cd client
+npm install
+```
+
+#### Backend
+
+```sh
+cd ../server
+npm install
+```
+
+### 3. Environment Variables
+
+- Set up environment variables as needed (see `client/.env.example` and `server/.env.example` if available).
+- The frontend expects `VITE_API_URL` to point to the backend server.
+
+### 4. Running the App
+
+#### Start Backend
+
+```sh
+cd server
+npm run dev
+```
+
+#### Start Frontend
+
+```sh
+cd client
+npm run dev
+```
+
+- The frontend will typically run on `http://localhost:5173` and backend on `http://localhost:3000` (or as configured).
+
+## Application Flow
+
+### Teacher POV
+
+1. **Create Session:** On visiting the dashboard, a new session is created automatically.
+2. **Share Join Code:** The teacher shares the session join code with students.
+3. **Create Polls:** The teacher creates polls with questions and options.
+4. **Start Poll:** The teacher starts a poll; students can answer in real time.
+5. **View Results:** The teacher sees live results and can reveal them to students.
+6. **Manage Students:** The teacher can monitor, kick students, and view poll history.
+7. **Chat:** The teacher can communicate with students via chat.
+
+### Student POV
+
+1. **Join Session:** Student enters the join code to access the session.
+2. **Answer Polls:** Student receives and answers polls as they are started by the teacher.
+3. **View Results:** Student sees poll results when revealed by the teacher.
+4. **Chat:** Student can send messages in the session chat.
+
+## Folder Structure
+
+- `client/` - Frontend React app
+- `server/` - Backend Node.js/Socket.IO server
+
+## Deployment
+
+- Frontend can be deployed to Vercel or similar platforms.
+- Backend can be deployed to any Node.js-compatible environment.
+
+## License
+
+MIT (or specify your license)
+
 Live Polling System: A Comprehensive Project Report
 
 1. Introduction
