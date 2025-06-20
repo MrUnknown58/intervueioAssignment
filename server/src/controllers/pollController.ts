@@ -17,7 +17,7 @@ export const getPolls = async (_req: Request, res: Response) => {
   res.json(data);
 };
 
-// The following REST endpoints are not used in the Socket.io-based backend and can be removed for code cleanliness.
+// The following REST endpoints are not used
 // export const getPollById = async (req: Request, res: Response) => {
 //   const { id } = req.params;
 //   const { data, error } = await supabase

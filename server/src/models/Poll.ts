@@ -10,7 +10,7 @@ export interface Poll {
   question: string;
   options: PollOption[];
   isActive: boolean;
-  startTime?: number; // timestamp when poll started
-  duration: number; // in seconds
-  responses: Record<string, string>; // studentId -> optionId
+  startTime?: number;
+  duration: number;
+  responses: Record<string, string>;
 }

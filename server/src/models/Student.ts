@@ -1,6 +1,6 @@
 // Student model
 export interface Student {
-  id: string; // unique per tab/session
+  id: string;
   name: string;
   joinedAt: number;
   hasAnswered: boolean;

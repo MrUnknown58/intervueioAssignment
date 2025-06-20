@@ -59,7 +59,6 @@ function removeStudentBySocket(socket: any, io: SocketIOServer) {
 
 export function registerSocketHandlers(io: SocketIOServer) {
   io.on("connection", (socket: Socket) => {
-    // ...existing code from index.ts socket connection handler...
     // Teacher joins session (for dashboard)
     socket.on("teacher:join", async (sessionId = "session1") => {
       socket.join(sessionId);
@@ -85,7 +84,6 @@ export function registerSocketHandlers(io: SocketIOServer) {
       // Initialize kickedStudents if not present
       if (!session.kickedStudents) session.kickedStudents = [];
       // Check if student is blacklisted (by name or by ID in sessionStorage)
-      // For now, only by name (since new ID is generated on join)
       if (session.kickedStudents.includes(name)) {
         if (callback) callback(null);
         socket.emit(
@@ -135,14 +133,27 @@ export function registerSocketHandlers(io: SocketIOServer) {
       }
       // Create poll object with correct PollOption structure
       const pollId = crypto.randomUUID ? crypto.randomUUID() : uuidv4();
-      const poll = {
-        id: pollId,
-        question,
-        options: options.map((text: string, idx: number) => ({
+      // If options are already objects with id/text/votes, use as-is; otherwise, map from string
+      let pollOptions;
+      if (
+        typeof options[0] === "object" &&
+        options[0] !== null &&
+        "id" in options[0] &&
+        "text" in options[0] &&
+        "votes" in options[0]
+      ) {
+        pollOptions = options;
+      } else {
+        pollOptions = options.map((text: string, idx: number) => ({
           id: `${pollId}_opt${idx}`,
           text,
           votes: 0,
-        })),
+        }));
+      }
+      const poll = {
+        id: pollId,
+        question,
+        options: pollOptions,
         isActive: true, // Make poll active immediately
         startTime: Date.now(), // Set start time to now
         duration: duration || 60,
